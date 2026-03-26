@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\Debug\netcoreapp3.1\</OutputPath>
+    <DocumentationFile>bin\Debug\netcoreapp3.1\MESTOP.WebApi.xml</DocumentationFile>
+    <NoWarn>1701;1702;CS1591;CS8618;CS8600;CS8602;CS1572;CS1573;CS1587;CS1570;CS1591;CS0219;CS8765;CA2200;CS8600;CS8603;CS8604;CS8618;CS8629;CS8600;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp3.1\MESTOP.WebApi.xml</DocumentationFile>
+    <OutputPath>bin\Release\netcoreapp3.1\</OutputPath>
+    <NoWarn>1701;1702;CS1572;CS1573;CS1587;CS8618;CS8600;CS8602;CS1591;CS0219;CS8765;CS8600;CS8603;CS8604;CS8629;CS8600;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\BASE\**" />
+    <Compile Remove="Controllers\CSR_JD\**" />
+    <Compile Remove="Controllers\EMS\**" />
+    <Compile Remove="Controllers\FCM\**" />
+    <Compile Remove="Controllers\JHC\**" />
+    <Compile Remove="Controllers\JRM\**" />
+    <Compile Remove="Controllers\MMS\**" />
+    <Compile Remove="Controllers\ORG\**" />
+    <Compile Remove="Controllers\PMS\**" />
+    <Compile Remove="Controllers\PPM\**" />
+    <Compile Remove="Controllers\QCM\**" />
+    <Compile Remove="Controllers\SIM\**" />
+    <Compile Remove="Controllers\WOC\**" />
+    <Compile Remove="Download\**" />
+    <Content Remove="Controllers\BASE\**" />
+    <Content Remove="Controllers\CSR_JD\**" />
+    <Content Remove="Controllers\EMS\**" />
+    <Content Remove="Controllers\FCM\**" />
+    <Content Remove="Controllers\JHC\**" />
+    <Content Remove="Controllers\JRM\**" />
+    <Content Remove="Controllers\MMS\**" />
+    <Content Remove="Controllers\ORG\**" />
+    <Content Remove="Controllers\PMS\**" />
+    <Content Remove="Controllers\PPM\**" />
+    <Content Remove="Controllers\QCM\**" />
+    <Content Remove="Controllers\SIM\**" />
+    <Content Remove="Controllers\WOC\**" />
+    <Content Remove="Download\**" />
+    <EmbeddedResource Remove="Controllers\BASE\**" />
+    <EmbeddedResource Remove="Controllers\CSR_JD\**" />
+    <EmbeddedResource Remove="Controllers\EMS\**" />
+    <EmbeddedResource Remove="Controllers\FCM\**" />
+    <EmbeddedResource Remove="Controllers\JHC\**" />
+    <EmbeddedResource Remove="Controllers\JRM\**" />
+    <EmbeddedResource Remove="Controllers\MMS\**" />
+    <EmbeddedResource Remove="Controllers\ORG\**" />
+    <EmbeddedResource Remove="Controllers\PMS\**" />
+    <EmbeddedResource Remove="Controllers\PPM\**" />
+    <EmbeddedResource Remove="Controllers\QCM\**" />
+    <EmbeddedResource Remove="Controllers\SIM\**" />
+    <EmbeddedResource Remove="Controllers\WOC\**" />
+    <EmbeddedResource Remove="Download\**" />
+    <None Remove="Controllers\BASE\**" />
+    <None Remove="Controllers\CSR_JD\**" />
+    <None Remove="Controllers\EMS\**" />
+    <None Remove="Controllers\FCM\**" />
+    <None Remove="Controllers\JHC\**" />
+    <None Remove="Controllers\JRM\**" />
+    <None Remove="Controllers\MMS\**" />
+    <None Remove="Controllers\ORG\**" />
+    <None Remove="Controllers\PMS\**" />
+    <None Remove="Controllers\PPM\**" />
+    <None Remove="Controllers\QCM\**" />
+    <None Remove="Controllers\SIM\**" />
+    <None Remove="Controllers\WOC\**" />
+    <None Remove="Download\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.0.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+    <PackageReference Include="Quartz" Version="3.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MESTOP.Builder\MESTOP.Builder.csproj" />
+    <ProjectReference Include="..\MESTOP.Core\MESTOP.Core.csproj" />
+    <ProjectReference Include="..\MESTOP.Entity\MESTOP.Entity.csproj" />
+    <ProjectReference Include="..\MESTOP.Builder\MESTOP.Builder.csproj" />
+    <ProjectReference Include="..\MESTOP.Core\MESTOP.Core.csproj" />
+    <ProjectReference Include="..\MESTOP.Entity\MESTOP.Entity.csproj" />
+    <ProjectReference Include="..\MESTOP.Sys\MESTOP.Sys.csproj" />
+    <ProjectReference Include="..\RMS\RMS.csproj" />
+    <ProjectReference Include="..\SYS\SYS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\TOP\Partial\" />
+    <Folder Include="plugs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="SIM.csproj" />
+  </ItemGroup>
+
+
+</Project>

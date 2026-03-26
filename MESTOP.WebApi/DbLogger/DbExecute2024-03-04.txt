@@ -1,0 +1,259 @@
+
+
+==========================================
+执行sql(超级管理员)：
+CREATE TABLE [dbo].[ORG_Organization](
+	[OrgId] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[OrgName] [nvarchar](50) NULL,
+	[OrgCode] [nvarchar](50) NULL,
+	[ParentId] [int] NULL,
+	[ParentName] [nvarchar](50) NULL,
+	[OrgSOP] [nvarchar](500) NULL,
+	[OrgEName] [nvarchar](50) NULL,
+	[OrgType] [int] NULL,
+	[Position] [nvarchar](50) NULL,
+	[isDel] [int] NULL,
+ CONSTRAINT [PK_ORG_Organization_1] PRIMARY KEY CLUSTERED 
+(
+	[OrgId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ORG_Organization] ADD  CONSTRAINT [DF_ORG_Organization_OrgId]  DEFAULT (newid()) FOR [OrgId]
+GO
+
+ALTER TABLE [dbo].[ORG_Organization] ADD  CONSTRAINT [DF_ORG_Organization_isDel]  DEFAULT ((0)) FOR [isDel]
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'组织名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ORG_Organization', @level2type=N'COLUMN',@level2name=N'OrgName'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'组织编码' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ORG_Organization', @level2type=N'COLUMN',@level2name=N'OrgCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上级组织编码' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ORG_Organization', @level2type=N'COLUMN',@level2name=N'ParentId'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上级组织名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ORG_Organization', @level2type=N'COLUMN',@level2name=N'ParentName'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'组织作业指导书' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ORG_Organization', @level2type=N'COLUMN',@level2name=N'OrgSOP'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'组织英文名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ORG_Organization', @level2type=N'COLUMN',@level2name=N'OrgEName'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'组织类型' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ORG_Organization', @level2type=N'COLUMN',@level2name=N'OrgType'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'负责职位' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ORG_Organization', @level2type=N'COLUMN',@level2name=N'Position'
+GO
+
+
+
+ --------2024-03-04 20:20:11(超级管理员)------------ 
+2024-03-04 20:20:10,实例：东方九天,数据库:MESJSJT,执行失败,“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2827
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67
+2024-03-04 20:20:10,实例：空数据库,数据库:DB_Empty,执行失败,用户 'sa' 登录失败。   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2826
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67
+2024-03-04 20:20:10,实例：江苏九天,数据库:MES.TOP,执行失败,“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。
+“GO”附近有语法错误。   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2827
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67
+
+==========================================
+执行sql(超级管理员)： 
+
+CREATE TABLE  [ORG_Organization](
+	[OrgId] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[OrgName] [nvarchar](50) NULL,
+	[OrgCode] [nvarchar](50) NULL,
+	[ParentId] [int] NULL,
+	[ParentName] [nvarchar](50) NULL,
+	[OrgSOP] [nvarchar](500) NULL,
+	[OrgEName] [nvarchar](50) NULL,
+	[OrgType] [int] NULL,
+	[Position] [nvarchar](50) NULL,
+	[isDel] [int] NULL,
+ CONSTRAINT [PK_ORG_Organization_1] PRIMARY KEY CLUSTERED 
+(
+	[OrgId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ 
+
+
+ --------2024-03-04 20:21:48(超级管理员)------------ 
+2024-03-04 20:21:48,实例：空数据库,数据库:DB_Empty,执行失败,用户 'sa' 登录失败。   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2826
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67
+2024-03-04 20:21:48,实例：东方九天,数据库:MESJSJT,执行失败,“GO”附近有语法错误。   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2827
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67
+2024-03-04 20:21:48,实例：江苏九天,数据库:MES.TOP,执行失败,“GO”附近有语法错误。   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2827
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67
+
+==========================================
+执行sql(超级管理员)： 
+
+CREATE TABLE  [ORG_Organization](
+	[OrgId] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[OrgName] [nvarchar](50) NULL,
+	[OrgCode] [nvarchar](50) NULL,
+	[ParentId] [int] NULL,
+	[ParentName] [nvarchar](50) NULL,
+	[OrgSOP] [nvarchar](500) NULL,
+	[OrgEName] [nvarchar](50) NULL,
+	[OrgType] [int] NULL,
+	[Position] [nvarchar](50) NULL,
+	[isDel] [int] NULL,
+ CONSTRAINT [PK_ORG_Organization_1] PRIMARY KEY CLUSTERED 
+(
+	[OrgId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ 
+
+
+ --------2024-03-04 20:22:06(超级管理员)------------ 
+2024-03-04 20:22:06,实例：空数据库,数据库:DB_Empty,执行失败,用户 'sa' 登录失败。   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2826
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67
+2024-03-04 20:22:06,实例：东方九天,数据库:MESJSJT,执行失败,“GO”附近有语法错误。   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2827
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67
+2024-03-04 20:22:06,实例：江苏九天,数据库:MES.TOP,执行失败,“GO”附近有语法错误。   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in C:\projects\dapper\Dapper\SqlMapper.cs:line 2827
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in C:\projects\dapper\Dapper\SqlMapper.cs:line 570
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 443
+   at MESTOP.Core.Dapper.SqlDapper.<>c__DisplayClass28_0.<ExcuteNonQuery>b__0(IDbConnection conn, IDbTransaction dbTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 284
+   at MESTOP.Core.Dapper.SqlDapper.Execute[T](Func`3 func, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 71
+   at MESTOP.Core.Dapper.SqlDapper.ExcuteNonQuery(String cmd, Object param, Nullable`1 commandType, Boolean beginTransaction) in D:\航天科技\MES.TOP.NET\MESTOP.Core\Dapper\SqlDapper.cs:line 282
+   at MESTOP.WebApi.Controllers.DbManagerController.<>c__DisplayClass0_1.<Exectue>b__1() in D:\航天科技\MES.TOP.NET\MESTOP.WebApi\Controllers\DbManagerController.cs:line 67

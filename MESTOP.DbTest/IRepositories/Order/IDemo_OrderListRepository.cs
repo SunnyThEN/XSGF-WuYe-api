@@ -1,0 +1,18 @@
+/*
+ *代码由框架生成,任何更改都可能导致被代码生成器覆盖
+ *Repository提供数据库操作，如果要增加数据库操作请在当前目录下Partial文件夹IDemo_OrderListRepository编写接口
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MESTOP.Core.BaseProvider;
+using MESTOP.Entity.DomainModels;
+using MESTOP.Core.Extensions.AutofacManager;
+namespace MESTOP.DbTest.IRepositories
+{
+    public partial interface IDemo_OrderListRepository : IDependency,IRepository<Demo_OrderList>
+    {
+    }
+}

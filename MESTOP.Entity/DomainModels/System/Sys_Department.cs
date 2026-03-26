@@ -1,0 +1,162 @@
+/*
+ *代码由框架生成,任何更改都可能导致被代码生成器覆盖
+ *如果数据库字段发生变化，请在代码生器重新生成此Model
+ */
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MESTOP.Entity.SystemModels;
+
+namespace MESTOP.Entity.DomainModels
+{
+    [Entity(TableCnName = "组织架构",TableName = "Sys_Department",DBServer = "SysDbContext")]
+    public partial class Sys_Department:SysEntity
+    {
+        /// <summary>
+       ///
+       /// </summary>
+       [Key]
+       [Display(Name ="DepartmentId")]
+       [Column(TypeName="uniqueidentifier")]
+       [Editable(true)]
+       [Required(AllowEmptyStrings=false)]
+       public Guid DepartmentId { get; set; }
+
+       /// <summary>
+       ///部门名称
+       /// </summary>
+       [Display(Name ="部门名称")]
+       [MaxLength(200)]
+       [Column(TypeName="nvarchar(200)")]
+       [Editable(true)]
+       [Required(AllowEmptyStrings=false)]
+       public string DepartmentName { get; set; }
+
+       /// <summary>
+       ///部门编码
+       /// </summary>
+       [Display(Name ="部门编码")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string DepartmentCode { get; set; }
+
+       /// <summary>
+       ///上级组织
+       /// </summary>
+       [Display(Name ="上级组织")]
+       [Column(TypeName="uniqueidentifier")]
+       [Editable(true)]
+       public Guid? ParentId { get; set; }
+
+       /// <summary>
+       ///部门类别
+       /// </summary>
+       [Display(Name ="部门类别")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string DepartmentType { get; set; }
+
+       /// <summary>
+       ///是否启用
+       /// </summary>
+       [Display(Name ="是否启用")]
+       [Column(TypeName="int")]
+       [Editable(true)]
+       public int? Enable { get; set; }
+
+       /// <summary>
+       ///备注
+       /// </summary>
+       [Display(Name ="备注")]
+       [MaxLength(500)]
+       [Column(TypeName="nvarchar(500)")]
+       [Editable(true)]
+       public string Remark { get; set; }
+
+       /// <summary>
+       ///创建人ID
+       /// </summary>
+       [Display(Name ="创建人ID")]
+       [Column(TypeName="int")]
+       [Editable(true)]
+       public int? CreateID { get; set; }
+
+       /// <summary>
+       ///创建人
+       /// </summary>
+       [Display(Name ="创建人")]
+       [MaxLength(30)]
+       [Column(TypeName="nvarchar(30)")]
+       [Editable(true)]
+       public string Creator { get; set; }
+
+       /// <summary>
+       ///创建日期
+       /// </summary>
+       [Display(Name ="创建日期")]
+       [Column(TypeName="datetime")]
+       [Editable(true)]
+       public DateTime? CreateDate { get; set; }
+
+       /// <summary>
+       ///修改人ID
+       /// </summary>
+       [Display(Name ="修改人ID")]
+       [Column(TypeName="int")]
+       [Editable(true)]
+       public int? ModifyID { get; set; }
+
+       /// <summary>
+       ///修改人
+       /// </summary>
+       [Display(Name ="修改人")]
+       [MaxLength(30)]
+       [Column(TypeName="nvarchar(30)")]
+       [Editable(true)]
+       public string Modifier { get; set; }
+
+       /// <summary>
+       ///修改日期
+       /// </summary>
+       [Display(Name ="修改日期")]
+       [Column(TypeName="datetime")]
+       [Editable(true)]
+       public DateTime? ModifyDate { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="OrgParentId")]
+       [Column(TypeName="int")]
+       public int? OrgParentId { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="OrgId")]
+       [Column(TypeName="int")]
+       public int? OrgId { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="OrgType")]
+       [Column(TypeName="int")]
+       public int? OrgType { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="DbServiceId")]
+       [Column(TypeName="uniqueidentifier")]
+       public Guid? DbServiceId { get; set; }
+
+       
+    }
+}

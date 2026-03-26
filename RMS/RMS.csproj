@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MESTOP.Builder\MESTOP.Builder.csproj" />
+    <ProjectReference Include="..\MESTOP.Core\MESTOP.Core.csproj" />
+    <ProjectReference Include="..\MESTOP.Entity\MESTOP.Entity.csproj" />
+    <ProjectReference Include="..\MESTOP.Sys\MESTOP.Sys.csproj" />
+  </ItemGroup>
+
+</Project>
