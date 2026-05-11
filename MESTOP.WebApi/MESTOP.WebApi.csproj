@@ -30,6 +30,7 @@
     <Compile Remove="Controllers\PPM\**" />
     <Compile Remove="Controllers\QCM\**" />
     <Compile Remove="Controllers\SIM\**" />
+    <Compile Remove="Controllers\TOP\**" />
     <Compile Remove="Controllers\WOC\**" />
     <Compile Remove="Download\**" />
     <Content Remove="Controllers\BASE\**" />
@@ -44,6 +45,7 @@
     <Content Remove="Controllers\PPM\**" />
     <Content Remove="Controllers\QCM\**" />
     <Content Remove="Controllers\SIM\**" />
+    <Content Remove="Controllers\TOP\**" />
     <Content Remove="Controllers\WOC\**" />
     <Content Remove="Download\**" />
     <EmbeddedResource Remove="Controllers\BASE\**" />
@@ -58,6 +60,7 @@
     <EmbeddedResource Remove="Controllers\PPM\**" />
     <EmbeddedResource Remove="Controllers\QCM\**" />
     <EmbeddedResource Remove="Controllers\SIM\**" />
+    <EmbeddedResource Remove="Controllers\TOP\**" />
     <EmbeddedResource Remove="Controllers\WOC\**" />
     <EmbeddedResource Remove="Download\**" />
     <None Remove="Controllers\BASE\**" />
@@ -72,6 +75,7 @@
     <None Remove="Controllers\PPM\**" />
     <None Remove="Controllers\QCM\**" />
     <None Remove="Controllers\SIM\**" />
+    <None Remove="Controllers\TOP\**" />
     <None Remove="Controllers\WOC\**" />
     <None Remove="Download\**" />
   </ItemGroup>
@@ -97,7 +101,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\TOP\Partial\" />
     <Folder Include="plugs\" />
   </ItemGroup>
 

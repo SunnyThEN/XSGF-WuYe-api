@@ -36,6 +36,14 @@ namespace MESTOP.Entity.DomainModels
        public int OwnerId { get; set; }
 
        /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="ParentId")]
+       [Column(TypeName="int")]
+       [Editable(true)]
+       public int? ParentId { get; set; }
+
+       /// <summary>
        ///业主名称
        /// </summary>
        [Display(Name ="业主名称")]
@@ -53,12 +61,28 @@ namespace MESTOP.Entity.DomainModels
        public float? DueAmount { get; set; }
 
        /// <summary>
+       ///优惠金额
+       /// </summary>
+       [Display(Name ="优惠金额")]
+       [Column(TypeName="float")]
+       [Editable(true)]
+       public float? DiscountAmount { get; set; }
+
+       /// <summary>
        ///实收金额
        /// </summary>
        [Display(Name ="实收金额")]
        [Column(TypeName="float")]
        [Editable(true)]
        public float? ActualAmount { get; set; }
+
+       /// <summary>
+       ///付款截止日期
+       /// </summary>
+       [Display(Name ="付款截止日期")]
+       [Column(TypeName="date")]
+       [Editable(true)]
+       public DateTime? PaymentDeadline { get; set; }
 
        /// <summary>
        ///付款日期

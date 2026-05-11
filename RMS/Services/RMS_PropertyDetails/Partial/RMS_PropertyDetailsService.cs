@@ -37,5 +37,55 @@ namespace RMS.Services
             //多租户会用到这init代码，其他情况可以不用
             //base.Init(dbRepository);
         }
-  }
+
+
+        public override WebResponseContent Update(SaveModel saveModel)
+        {
+            WebResponseContent webResponse = new WebResponseContent();
+            //注意：如果要给其他字段设置值，请在此处设置,如：（代码生成器上将字段编辑行设置为0，然后点生成model）
+            //saveModel.MainData["Remark"] = "值";//Remark改为你的字段
+
+            //编辑方法保存数据库前处理
+            UpdateOnExecuting = (RMS_PropertyDetails order, object addList, object updateList, List<object> delKeys) =>
+            {
+             
+                //如果要手动设置某些字段的值,值不是前端提交的（代码生成器里面编辑行必须设置为0并生成model
+                //注意:必须设置上面saveModel.MainData["Remark"] = "值";
+                //order.Remark = "888";
+
+                //删除明细表Id
+                var guids = delKeys?.Select(x => (Guid)x);
+
+                //如果设置code=-1会,不会执行后面的数据库保存，前端会提示成功
+                //webResponse.Code = "-1";
+                //return webResponse.OK("返回提示");
+
+                return webResponse.OK();
+            };
+
+            //编辑方法保存数据库后处理
+            //此方法中已开启了事务，如果在此方法中做其他数据库操作，请不要再开启事务
+            // 在保存数据库后的操作，此时已进行数据提交，但未提交事务，如果返回false，则会回滚提交
+          //  表 order2 = null;
+            //UpdateOnExecuted = (表 order, object addList, object updateList, List<object> delKeys) =>
+            //{
+            //    order2 = order;//外面申明对象，用于下面if(res.Status)自定义业务逻辑取数
+            //                   //如果是一对多表,在这里根据主键id查询出来后单独处理业务逻辑
+            //                   //新增的明细
+            //    List<表List> add = addList as List<表List>;
+            //    //修改的明细
+            //    List<表List> update = updateList as List<表List>;
+            //    //删除的行的主键
+            //    var guids = delKeys?.Select(x => (Guid)x);
+            //    //保存到数据库后，这里可以再查询数据库写业务操作
+            //    //注意EF版,这里如果是执行的sql，只能使用ef执行sql，如:repository.DbContext.Database.xx
+            //    return webResponse.OK();
+            //};
+
+            var res = base.Update(saveModel);
+            //这里在保存成功后做一些其他操作
+       
+            return res;
+        }
+    }
 }

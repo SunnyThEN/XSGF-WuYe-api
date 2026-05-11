@@ -27,23 +27,14 @@ namespace MESTOP.Entity.DomainModels
        public Guid DepartmentId { get; set; }
 
        /// <summary>
-       ///部门名称
+       ///名称
        /// </summary>
-       [Display(Name ="部门名称")]
+       [Display(Name ="名称")]
        [MaxLength(200)]
        [Column(TypeName="nvarchar(200)")]
        [Editable(true)]
        [Required(AllowEmptyStrings=false)]
        public string DepartmentName { get; set; }
-
-       /// <summary>
-       ///部门编码
-       /// </summary>
-       [Display(Name ="部门编码")]
-       [MaxLength(50)]
-       [Column(TypeName="nvarchar(50)")]
-       [Editable(true)]
-       public string DepartmentCode { get; set; }
 
        /// <summary>
        ///上级组织
@@ -54,18 +45,27 @@ namespace MESTOP.Entity.DomainModels
        public Guid? ParentId { get; set; }
 
        /// <summary>
-       ///部门类别
+       ///编号
        /// </summary>
-       [Display(Name ="部门类别")]
+       [Display(Name ="编号")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string DepartmentCode { get; set; }
+
+       /// <summary>
+       ///类型
+       /// </summary>
+       [Display(Name ="类型")]
        [MaxLength(50)]
        [Column(TypeName="nvarchar(50)")]
        [Editable(true)]
        public string DepartmentType { get; set; }
 
        /// <summary>
-       ///是否启用
+       ///是否可用
        /// </summary>
-       [Display(Name ="是否启用")]
+       [Display(Name ="是否可用")]
        [Column(TypeName="int")]
        [Editable(true)]
        public int? Enable { get; set; }
@@ -80,9 +80,9 @@ namespace MESTOP.Entity.DomainModels
        public string Remark { get; set; }
 
        /// <summary>
-       ///创建人ID
+       ///
        /// </summary>
-       [Display(Name ="创建人ID")]
+       [Display(Name ="CreateID")]
        [Column(TypeName="int")]
        [Editable(true)]
        public int? CreateID { get; set; }
@@ -97,17 +97,17 @@ namespace MESTOP.Entity.DomainModels
        public string Creator { get; set; }
 
        /// <summary>
-       ///创建日期
+       ///创建时间
        /// </summary>
-       [Display(Name ="创建日期")]
+       [Display(Name ="创建时间")]
        [Column(TypeName="datetime")]
        [Editable(true)]
        public DateTime? CreateDate { get; set; }
 
        /// <summary>
-       ///修改人ID
+       ///
        /// </summary>
-       [Display(Name ="修改人ID")]
+       [Display(Name ="ModifyID")]
        [Column(TypeName="int")]
        [Editable(true)]
        public int? ModifyID { get; set; }
@@ -122,39 +122,19 @@ namespace MESTOP.Entity.DomainModels
        public string Modifier { get; set; }
 
        /// <summary>
-       ///修改日期
+       ///修改时间
        /// </summary>
-       [Display(Name ="修改日期")]
+       [Display(Name ="修改时间")]
        [Column(TypeName="datetime")]
        [Editable(true)]
        public DateTime? ModifyDate { get; set; }
 
        /// <summary>
-       ///
+       ///所属数据库
        /// </summary>
-       [Display(Name ="OrgParentId")]
-       [Column(TypeName="int")]
-       public int? OrgParentId { get; set; }
-
-       /// <summary>
-       ///
-       /// </summary>
-       [Display(Name ="OrgId")]
-       [Column(TypeName="int")]
-       public int? OrgId { get; set; }
-
-       /// <summary>
-       ///
-       /// </summary>
-       [Display(Name ="OrgType")]
-       [Column(TypeName="int")]
-       public int? OrgType { get; set; }
-
-       /// <summary>
-       ///
-       /// </summary>
-       [Display(Name ="DbServiceId")]
+       [Display(Name ="所属数据库")]
        [Column(TypeName="uniqueidentifier")]
+       [Editable(true)]
        public Guid? DbServiceId { get; set; }
 
        

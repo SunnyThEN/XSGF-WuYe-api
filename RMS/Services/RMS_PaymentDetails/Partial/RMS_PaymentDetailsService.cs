@@ -37,5 +37,28 @@ namespace RMS.Services
             //多租户会用到这init代码，其他情况可以不用
             //base.Init(dbRepository);
         }
-  }
+        /// <summary>
+        /// 导出
+        /// </summary>
+        /// <param name="pageData"></param>
+        /// <returns></returns>
+        public override WebResponseContent Export(PageDataOptions pageData)
+        {
+            WebResponseContent webResponse = new WebResponseContent();
+            //设置最大导出的数量
+            //Limit = 1000;
+            //指定导出的字段
+            //ExportColumns = x => new { x.SellNo, x.TranNo, x.CreateDate };
+
+            //查询要导出的数据后，在生成excel文件前处理
+            //list导出的实体，ignore过滤不导出的字段
+            ExportOnExecuting = (List<RMS_PaymentDetails> list, List<string> ignore) =>
+            {
+
+                return webResponse.OK();
+            };
+
+            return base.Export(pageData);
+        }
+    }
 }
