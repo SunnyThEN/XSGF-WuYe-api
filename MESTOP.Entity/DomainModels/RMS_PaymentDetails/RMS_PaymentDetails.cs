@@ -61,6 +61,14 @@ namespace MESTOP.Entity.DomainModels
        public float? DueAmount { get; set; }
 
        /// <summary>
+       ///实收金额
+       /// </summary>
+       [Display(Name ="实收金额")]
+       [Column(TypeName="float")]
+       [Editable(true)]
+       public float? ActualAmount { get; set; }
+
+       /// <summary>
        ///优惠金额
        /// </summary>
        [Display(Name ="优惠金额")]
@@ -69,12 +77,60 @@ namespace MESTOP.Entity.DomainModels
        public float? DiscountAmount { get; set; }
 
        /// <summary>
-       ///实收金额
+       ///欠缴金额
        /// </summary>
-       [Display(Name ="实收金额")]
+       [Display(Name ="欠缴金额")]
        [Column(TypeName="float")]
        [Editable(true)]
-       public float? ActualAmount { get; set; }
+       public float? ArrearsAmount { get; set; }
+
+       /// <summary>
+       ///应收租金
+       /// </summary>
+       [Display(Name ="应收租金")]
+       [Column(TypeName="float")]
+       [Editable(true)]
+       public float? DueLeaseAmount { get; set; }
+
+       /// <summary>
+       ///实收租金
+       /// </summary>
+       [Display(Name ="实收租金")]
+       [Column(TypeName="float")]
+       [Editable(true)]
+       public float? ActualLeaseAmount { get; set; }
+
+       /// <summary>
+       ///应收管理费
+       /// </summary>
+       [Display(Name ="应收管理费")]
+       [Column(TypeName="float")]
+       [Editable(true)]
+       public float? DueManageAmout { get; set; }
+
+       /// <summary>
+       ///实收管理费
+       /// </summary>
+       [Display(Name ="实收管理费")]
+       [Column(TypeName="float")]
+       [Editable(true)]
+       public float? ActualManageAmount { get; set; }
+
+       /// <summary>
+       ///免租起始日期
+       /// </summary>
+       [Display(Name ="免租起始日期")]
+       [Column(TypeName="date")]
+       [Editable(true)]
+       public DateTime? RentFreeStartTime { get; set; }
+
+       /// <summary>
+       ///免租结束日期
+       /// </summary>
+       [Display(Name ="免租结束日期")]
+       [Column(TypeName="date")]
+       [Editable(true)]
+       public DateTime? RentFreeEndTime { get; set; }
 
        /// <summary>
        ///付款截止日期
@@ -93,20 +149,45 @@ namespace MESTOP.Entity.DomainModels
        public DateTime? PaymentDate { get; set; }
 
        /// <summary>
-       ///付款期间起
+       ///租赁付款期间起
        /// </summary>
-       [Display(Name ="付款期间起")]
+       [Display(Name ="租赁付款期间起")]
        [Column(TypeName="date")]
        [Editable(true)]
        public DateTime? PaymentStartDate { get; set; }
 
        /// <summary>
-       ///付款期间止
+       ///租赁付款期间止
        /// </summary>
-       [Display(Name ="付款期间止")]
+       [Display(Name ="租赁付款期间止")]
        [Column(TypeName="date")]
        [Editable(true)]
        public DateTime? PaymentEndDate { get; set; }
+
+       /// <summary>
+       ///发票金额
+       /// </summary>
+       [Display(Name ="发票金额")]
+       [Column(TypeName="float")]
+       [Editable(true)]
+       public float? InvoiceAmount { get; set; }
+
+       /// <summary>
+       ///发票日期
+       /// </summary>
+       [Display(Name ="发票日期")]
+       [Column(TypeName="date")]
+       [Editable(true)]
+       public DateTime? InvoiceDate { get; set; }
+
+       /// <summary>
+       ///发票号码
+       /// </summary>
+       [Display(Name ="发票号码")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string InvoiceNo { get; set; }
 
        /// <summary>
        ///备注

@@ -53,6 +53,22 @@ namespace MESTOP.Entity.DomainModels
        public DateTime? PaymentDate { get; set; }
 
        /// <summary>
+       ///免租起始日期
+       /// </summary>
+       [Display(Name ="免租起始日期")]
+       [Column(TypeName="date")]
+       [Editable(true)]
+       public DateTime? RentFreeStartTime { get; set; }
+
+       /// <summary>
+       ///免租结束日期
+       /// </summary>
+       [Display(Name ="免租结束日期")]
+       [Column(TypeName="date")]
+       [Editable(true)]
+       public DateTime? RentFreeEndTime { get; set; }
+
+       /// <summary>
        ///租赁起始日期
        /// </summary>
        [Display(Name ="租赁起始日期")]

@@ -232,129 +232,52 @@ namespace MESTOP.WebApi
             PrintContainer.Instance
             
                  /*****************[全国城市]单表打印*****************/
-                 .Use<JRM_BFJobReportItemReport>(
+                 .Use<RMS_PropertyDetails>(
                    //主表配置
-                   name: "吹膜打印",
+                   name: "租赁管理打印",
                    //主表可以打印的字段
                    printFields: x => new
                    {
-                       x.NEWFLOT,
-                       x.WorkStationName,
-                       x.ProductName,
-                       x.OutLengthUnit,
-                       x.GrossWeight,
-                       x.OutWeightUnit,
-					   x.OutThicknessUnit,
-					   x.OutWidthUnit,
-                       x.ProductDesc,
-                       x.Remark,
-                      x.UserTrueName
-
+                       x.TenantName,
+                       x.RentalStartTime,
+                       x.RentalEndTime,
+                       x.MonthlyRent,
+                       x.MonthlyManageFee,
+                       x.Area,
+                       x.Company,
+                       x.RoomNumber
 
                    }
                  )
-                 ////主从表同时打印(注意Use第一个参数是主表，第二个明细表)
-                 .Use<WOC_Dispatch_WorkFlow>(
+                 .Use<RMS_PaymentDetails>(
                    //主表配置
-                   name: "条码打印",
+                   name: "付款明细打印",
                    //主表可以打印的字段
                    printFields: x => new
                    {
-                       x.NEWFLOT,
-                       x.OutThicknessUnit,
-                       x.OutLengthUnit,
-                       x.OutWidthUnit,
-                       x.OutWeightUnit,
-                       x.TeamGroup,
-                       x.RealEndTime,
-                       x.ProductDesc,
-                       x.CoatingName,
-                       x.MaterialOutDesc,
-                       x.Meters,//产品代码（补加）
-                       x.NickelThk,
-                   }
+                       x.OwnerName,
+                       x.Company,
+                       x.DueAmount,
+                       x.DueLeaseAmount,
+                       x.DueManageAmout,
+                       x.ActualAmount,
+                       x.ActualLeaseAmount,
+                       x.ActualManageAmount,
+                       x.DiscountAmount,
+                       x.PaymentDate,
+                       x.PaymentDeadline,
+                       x.PaymentStartDate,
+                       x.PaymentEndDate,
+                       x.RentFreeEndTime,
+                       x.RentFreeStartTime,
+                       x.InvoiceAmount,
+                       x.InvoiceDate,
+                       x.InvoiceNo,
+                       x.Remark
 
-                 //  //明细表配置
-                 //  detailName: "订单详情",
-                 //  //明细表可以打印的字段
-                 //  detailPrintFields: c => new { c.GoodsCode, c.GoodsName, c.Specs, c.Price, c.Qty }
+                   }
                  )
-                   .Use<QCM_FinalSummary>(
-                   //主表配置
-                   name: "产品合格证打印",
-                   //主表可以打印的字段
-                   printFields: x => new
-                   {
-					   x.WorkOrderCode,
-                       x.ProductName,
-                       x.NEWFLOT,
-                       x.OutThicknessUnit,
-                       x.OutLengthUnit,
-                       x.OutWeightUnit,
-                       x.OutWidthUnit,
-                       x.TeamGroup,
-                       x.RealEndTime,
-                       x.HRB,
-                       x.HR30T,
-                       x.HNC,
-                       x.HR30N,
-                       x.HV,
-                       x.SurfaceGlo,
-                       x.SurfaceRou_Up,
-                       x.SurfaceRou_Down,
-                       x.UpRoller,
-                       x.LowRoller,
-                       x.YieldStrReH,
-                       x.YieldStrReL,
-                       x.YieldStrRp02,
-                       x.YieldToStrRat,
-                       x.NickelThk,
-                       x.BasebandThk,
-                       x.FilmThk,
-                       x.PeelStr,
-                       x.HeatSealStr,
-                       x.SingleRollMet,
-                       x.SingleRollWe,
-                       x.SingleRollWid,
-                       x.ProductDesc,
-                       x.Elo,
-                       x.EloA50,
-                       x.EloA80,
-                       x.Iron_NickelThk,
-                       x.ChromiumThk,
-                       x.Burr,
-                       x.TensileStr,
-                       x.MaterialGrade,
-                       x.GrossWeight,
-                       x.Remark,
-                       x.MThickness,
-                       x.MWidth,
-                       x.TThickness,
-                       x.TWidth,
-                       x.MaterialOutDesc,
-                       x.Meters,//产品代码（补加）
 
-                   }
-
-                 ).Use<CSR_JD_InventorySearch > (
-                   //主表配置
-                   name: "库存条码打印",
-                   //主表可以打印的字段
-                   printFields: x => new
-                   {
-                       x.FLOT,
-                    //   x.OutThicknessUnit,
-                   //    x.OutLengthUnit,
-                       x.MaterialWidth,
-                       x.FBASEQTY,
-                       x.F_PASF_LENTH,
-                   //    x.TeamGroup,
-                   //    x.RealEndTime,
-                   //    x.ProductDesc,
-                   //    x.CoatingName,
-                       x.MaterialDesc,
-                   //    x.Meters,//产品代码（补加）
-                   })
 
                  /*****************[订单表]打印配置(主从表明细表(一对一))*****************/
                  .Use<Demo_Order, Demo_OrderList>(

@@ -655,8 +655,24 @@ namespace MESTOP.Core.BaseProvider
             {
                 ignoreColumn = ignoreColumn.Distinct().ToList();
             }
+
+            int[] treeLevels = null;
+            string treeIndentColumn = null;
+            if (TreeExportHelper.ShouldExportAsTree(typeof(T), pageData, ExportAsTree, ExportAsFlat, TreeKeyField, TreeParentField)
+                && TreeExportHelper.TryResolveTreeFields(typeof(T), out var keyProperty, out var parentProperty, TreeKeyField, TreeParentField))
+            {
+                list = TreeExportHelper.OrderByTreeDepth(list, keyProperty, parentProperty, out treeLevels);
+                treeIndentColumn = TreeExportHelper.ResolveIndentColumn(
+                    exportFields,
+                    TreeIndentColumn,
+                    null);
+            }
+
             //ExportColumns 2020.05.07增加扩展指定导出模板的列
-            EPPlusHelper.Export(list, exportFields, ignoreColumn, savePath, fileName);
+            EPPlusHelper.Export(list, exportFields, ignoreColumn, savePath, fileName,
+                treeLevels: treeLevels,
+                treeIndentColumn: treeIndentColumn,
+                treeIndentSize: TreeIndentSize);
             //return Response.OK(null, (savePath + "/" + fileName).EncryptDES(AppSetting.Secret.ExportFile));
             //2022.01.08优化导出功能
             return Response.OK(null, (savePath + "/" + fileName));

@@ -331,7 +331,7 @@ namespace MESTOP.Core.Utilities
         /// <param name="fileName">保存的文件名</param>
         ///  <param name="template">是否为下载模板</param>
         /// <returns></returns>
-        public static string Export<T>(List<T> list, IEnumerable<string> exportColumns, IEnumerable<string> ignoreColumns, string savePath, string fileName, bool template = false, Expression<Func<T, Dictionary<string, string>>> headerMap = null)
+        public static string Export<T>(List<T> list, IEnumerable<string> exportColumns, IEnumerable<string> ignoreColumns, string savePath, string fileName, bool template = false, Expression<Func<T, Dictionary<string, string>>> headerMap = null, int[] treeLevels = null, string treeIndentColumn = null, int treeIndentSize = 4)
         {
             if (!Directory.Exists(savePath)) Directory.CreateDirectory(savePath);
 
@@ -451,6 +451,22 @@ namespace MESTOP.Core.Utilities
                     package.SaveAs(new FileInfo(fullPath));
                     return fullPath;
                 }
+
+                int indentColIndex = -1;
+                if (treeLevels != null && treeLevels.Length > 0 && !string.IsNullOrWhiteSpace(treeIndentColumn))
+                {
+                    indentColIndex = propertyInfo.FindIndex(p =>
+                        string.Equals(p.Name, treeIndentColumn, StringComparison.OrdinalIgnoreCase));
+                    if (indentColIndex < 0) indentColIndex = 0;
+                    worksheet.OutLineSummaryBelow = false;
+                }
+
+                string BuildTreeIndent(int level)
+                {
+                    if (level <= 0 || treeIndentSize <= 0) return string.Empty;
+                    return new string(' ', level * treeIndentSize);
+                }
+
                 //2021.01.24修复多选类型，导出excel文件没有转换数据源的问题
                 IEnumerable<string> GetListValues(string cellValues, string propertyName)
                 {
@@ -508,7 +524,23 @@ namespace MESTOP.Core.Utilities
                             worksheet.Cells[i + 2, j + 1].Style.Numberformat.Format = "@";
                             cellValue = cellValue?.ToString();
                         }
+
+                        if (indentColIndex >= 0 && j == indentColIndex && treeLevels != null && i < treeLevels.Length)
+                        {
+                            var text = cellValue?.ToString() ?? string.Empty;
+                            cellValue = BuildTreeIndent(treeLevels[i]) + text;
+                        }
+
                         worksheet.Cells[i + 2, j + 1].Value = cellValue;
+                    }
+
+                    if (treeLevels != null && i < treeLevels.Length)
+                    {
+                        int outlineLevel = Math.Min(treeLevels[i] + 1, 8);
+                        if (outlineLevel > 0)
+                        {
+                            worksheet.Row(i + 2).OutlineLevel = outlineLevel;
+                        }
                     }
                 }
 

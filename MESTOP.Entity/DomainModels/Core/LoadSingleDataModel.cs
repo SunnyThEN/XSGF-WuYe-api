@@ -36,6 +36,11 @@ namespace MESTOP.Entity.DomainModels
         ///  2024.02.03增加导出列表与界面显示字段一致
         /// </summary>
         public string[] Columns { get; set; }
+
+        /// <summary>
+        /// 树形表格导出：true 按树形排序并缩进；false 强制扁平导出；null 时由后端根据 ParentId 自动判断
+        /// </summary>
+        public bool? TreeExport { get; set; }
     }
     public class SearchParameters
     {

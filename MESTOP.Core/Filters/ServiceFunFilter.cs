@@ -210,6 +210,36 @@ namespace MESTOP.Core.Filters
         protected Func<List<T>, List<string>, WebResponseContent> ExportOnExecuting;
 
         /// <summary>
+        /// 树形表格导出：实体含 ParentId 等父子字段时，导出 Excel 保持层级（排序+缩进+分级）
+        /// </summary>
+        protected bool ExportAsTree { get; set; } = false;
+
+        /// <summary>
+        /// 强制扁平导出，忽略树形处理
+        /// </summary>
+        protected bool ExportAsFlat { get; set; } = false;
+
+        /// <summary>
+        /// 树形主键字段，默认取实体 [Key]
+        /// </summary>
+        protected string TreeKeyField { get; set; }
+
+        /// <summary>
+        /// 树形父级字段，默认 ParentId
+        /// </summary>
+        protected string TreeParentField { get; set; }
+
+        /// <summary>
+        /// 树形缩进列（一般为名称列），未设置时取导出列首列或 *Name 字段
+        /// </summary>
+        protected string TreeIndentColumn { get; set; }
+
+        /// <summary>
+        /// 每级缩进空格数
+        /// </summary>
+        protected int TreeIndentSize { get; set; } = 4;
+
+        /// <summary>
         /// 2020.05.07
         /// 导出表数据(界面上导出操作),指定要导出的列，格式:Expression<Func<T, object>> exp = x => new { x.字段1, x.字段2 }
         /// </summary>
